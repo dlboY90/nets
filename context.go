@@ -134,6 +134,11 @@ func (c *Context) AbortJSON(code int, data Result) {
 
 // JSON 响应输出json格式数据
 func (c *Context) JSON(code int, data Result) (err error) {
+	if data.Data == nil {
+		// Set the default value of API Result Data to empty AnyMap
+		data.Data = AnyMap{}
+	}
+
 	bytes, err := json.Marshal(data)
 	if err != nil {
 		panic(err)
