@@ -96,7 +96,7 @@ func middlewareMetas(mMetas methodMetas) (middlewares []meta) {
 }
 
 func createTree(root *node, startx int, fullPattern string, routeMetas []meta, middlewareMetas []meta) {
-	if mGroups, ok := groupMetas(startx, routeMetas, middlewareMetas); ok {
+	if mGroups, ok := groupMetas(startx, routeMetas, middlewareMetas, false); ok {
 		// 按照优先级生成树，优先级越高越靠左
 		for _, key := range sortGroupsKeys(mGroups) {
 			mGroup := mGroups[key]
@@ -136,7 +136,7 @@ func createTree(root *node, startx int, fullPattern string, routeMetas []meta, m
 
 // sortGroupsKeys 按照优先级给metasGroups元素索引排序
 func sortGroupsKeys(mGroups metasGroups) []int {
-	// 调整pattern优先级，*优先级3，路由参数标识符:优先级2，其他优先级1
+	// 调整pattern优先级，* < 路由参数标识符 < 其他
 	ps, ws, rs := []int{}, []int{}, []int{}
 
 	for key, mGroup := range mGroups {
@@ -161,7 +161,7 @@ func sortGroupsKeys(mGroups metasGroups) []int {
 }
 
 // groupMetas 根据前缀将metas分组
-func groupMetas(startx int, metas []meta, middlewareMetas []meta) (mGroups metasGroups, ok bool) {
+func groupMetas(startx int, metas []meta, middlewareMetas []meta, reentry bool) (mGroups metasGroups, ok bool) {
 	metasLen := len(metas)
 	if metasLen == 0 {
 		return
@@ -196,13 +196,13 @@ func groupMetas(startx int, metas []meta, middlewareMetas []meta) (mGroups metas
 		return
 	}
 
-	if groupsLen == 1 {
+	if groupsLen == 1 && reentry {
 		mGroups, ok = groups, true
 		return
 	}
 
 	for _, v := range groups {
-		if data, ok := groupMetas(startx, v.metas, middlewareMetas); ok {
+		if data, ok := groupMetas(startx, v.metas, middlewareMetas, true); ok {
 			for _, vv := range data {
 				mGroups.add(vv.pattern, vv.metas...)
 			}
