@@ -12,16 +12,16 @@ Nets is a HTTP API framework written in Go (Golang).
 <b>每次压测开始时负载</b>：1.0~1.05 <br/>
 
 <b>硬件环境</b>： <br/>
-![](https://github.com/dlboY90/resources/blob/main/nets_wrk_mac_new.png?raw=true)
+![硬件环境](https://github.com/dlboY90/resources/blob/main/nets_wrk_mac_new.png?raw=true)
 
 <b>Nets压测代码</b>： <br/>
-![](https://github.com/dlboY90/resources/blob/main/nets_wrk_nets_code.png?raw=true)
+![Nets压测代码](https://github.com/dlboY90/resources/blob/main/nets_wrk_nets_code.png?raw=true)
 
 <b>Gin压测代码</b>： <br/>
-![](https://github.com/dlboY90/resources/blob/main/nets_wrk_gin_code.png?raw=true)
+![Gin压测代码](https://github.com/dlboY90/resources/blob/main/nets_wrk_gin_code.png?raw=true)
 
 <b>Nets压测结果</b>： <br/>
-![](https://github.com/dlboY90/resources/blob/main/nets_wrk_nets_result.png?raw=true)
+![Nest压测结果](https://github.com/dlboY90/resources/blob/main/nets_wrk_nets_result.png?raw=true)
 
 <b>Gin压测结果</b>： <br/>
-![](https://github.com/dlboY90/resources/blob/main/nets_wrk_gin_result.png?raw=true)
+![Gin压测结果](https://github.com/dlboY90/resources/blob/main/nets_wrk_gin_result.png?raw=true)
