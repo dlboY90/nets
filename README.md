@@ -1,5 +1,5 @@
 # nets
-Nets is a HTTP API framework written in Go (Golang). 
+Nets is a high performance HTTP restful API framework written in go (golang).
 
 ## 性能压测（wrk）
 
